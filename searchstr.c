@@ -62,10 +62,8 @@ int main(int argc, char *argv[]) {
     }
 
     while ((pid = wait(&sts)) != -1) {
-        int found = 0;
         for (i = 0; i < num; i++) {
             if (procesos->array[i].pid == pid) {
-                found = 1;
                 if (WIFEXITED(sts) && WEXITSTATUS(sts) == 0) {
                     printf("%s <%s>: yes\n", procesos->array[i].ruta, procesos->array[i].palabra);
                 } else {
